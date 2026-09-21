@@ -5,3 +5,4 @@
 *.out
 dummy_io_test.txt
 *.html
+.env
