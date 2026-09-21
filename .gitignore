@@ -1,0 +1,7 @@
+*.so
+*.json
+*.jsonl
+*/__pycache__/
+*.out
+dummy_io_test.txt
+*.html
