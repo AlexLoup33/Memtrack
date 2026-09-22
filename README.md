@@ -2,7 +2,7 @@
     <img src="assets/memtracker.jpeg" height="200"/>
 </div>
 
-# MemTracker
+# MemTrack
 
 A lightweight, zero-instrumentation memory profiler and execution analyzer for C and C++ applications.
 
