@@ -13,7 +13,7 @@ MemTrack relies on an `LD_PRELOAD` shared library to intercept memory management
 Clone the repository and compile the C interceptor library:
 
 ```bash
-git clone https://github.com/AlexLoup33/Memtracker.git
+git clone https://github.com/AlexLoup33/Memtrack.git
 cd memtrack/interceptor
 make
 ```
