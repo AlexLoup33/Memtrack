@@ -3,19 +3,12 @@ import sys
 import subprocess
 import yaml
 
-def load_config(config_path):
-    if not os.path.exists(config_path):
-        return {}
-    with open(config_path, "r") as f:
-        data = yaml.safe_load(f)
-        return data.get("profiler", {}) if data else {}
 
-def run_target(target_bin, config_path):
+def run_target(target_bin):
     if not os.path.exists(target_bin):
         print(f"Error : '{target_bin}' not found.")
         sys.exit(1)
 
-    config = load_config(config_path)
     env = os.environ.copy()
     
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,12 +20,8 @@ def run_target(target_bin, config_path):
         sys.exit(1)
 
     env["LD_PRELOAD"] = interceptor_path
-    env["MEMTRACK_OUT"] = config.get("output_file", "trace.jsonl")
+    env["MEMTRACK_OUT"] = "trace.jsonl"
     
-    features = config.get("features", {})
-    env["MEMTRACK_TRACE_MALLOC"] = "1" if features.get("trace_malloc", True) else "0"
-    env["MEMTRACK_TRACE_IO"] = "1" if features.get("trace_io", True) else "0"
-
     print(f"Starting {target_bin} under surveillance...")
     print("The terminal is yours. Press Ctrl+C to force stop.")
     print("-" * 50)

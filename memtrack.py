@@ -1,7 +1,9 @@
 import argparse
+
 from profiler.runner import run_target
 from profiler.analyzer import analyze_trace
 from profiler.display import render_analysis
+from profiler.installer import install_lib
 
 def main():
     parser = argparse.ArgumentParser(description="MemTracker - Memory Profiling Tool")
@@ -16,7 +18,14 @@ def main():
     args = parser.parse_args()
 
     if args.command == "run":
-        run_target(args.target, args.config)
+        install_done = install_lib()
+
+        if (install_done):
+            run_target(args.target)
+        else:
+            print(f"Shutting down the program !") 
+            exit(0)
+
     elif args.command == "analyze":
         stats = analyze_trace(args.trace_file)
         render_analysis(stats)
