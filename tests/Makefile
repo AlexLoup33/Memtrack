@@ -1,13 +1,14 @@
-CC = gcc
+CC     = gcc
 CFLAGS = -Wall -Wextra -g -rdynamic
-
-TARGET = testbed
-SRC = testbed.c
-
+ 
+TARGET = memtest
+SRC    = memtest.c
+ 
 all: $(TARGET)
-
+ 
 $(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
-
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) -lpthread -ldl
+ 
 clean:
 	rm -f $(TARGET)
+ 

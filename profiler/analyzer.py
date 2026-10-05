@@ -60,10 +60,10 @@ def analyze_trace(trace_file):
 
             elif action == "read":
                 stats["io_reads"] += 1
-                stats["io_read_bytes"] += event.get("ret", 0)
+                stats["io_read_bytes"] += event.get("count", 0)
 
             elif action == "write":
                 stats["io_writes"] += 1
-                stats["io_write_bytes"] += event.get("ret", 0)
+                stats["io_write_bytes"] += event.get("count", 0)
 
         return stats

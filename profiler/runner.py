@@ -1,7 +1,6 @@
 import os
 import sys
 import subprocess
-import yaml
 
 
 def run_target(target_bin):

@@ -6,3 +6,4 @@
 dummy_io_test.txt
 *.html
 .env
+memtest
