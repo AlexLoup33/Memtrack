@@ -1,30 +1,3 @@
-"""
-exporter.py — HTML report generator for the memprof profiler.
-
-Public API
-----------
-export_html(stats, output_path="report.html") -> str
-    Build a self-contained HTML report from an already-analysed stats dict
-    (as returned by analyze_trace) and write it to disk.
-
-profile_and_export(target_bin, output_path="report.html", trace_file="trace.jsonl") -> str
-    Full pipeline: run the binary under LD_PRELOAD, parse the trace,
-    print the Rich terminal report, then write the HTML report.
-    Returns the absolute path of the HTML file.
-
-Timeline data source
---------------------
-The HTML timeline is driven by stats["timeline"], which analyze_trace()
-already builds.  Each entry has:
-    { "ts": float,            # seconds since program start
-      "memory": int,          # live bytes after malloc  (key = "memory")
-      "ram":    int,          # live bytes after free    (key = "ram")
-      "action": "malloc"|"free" }
-
-read / write events have no timeline entry in analyzer.py, so we inject
-lightweight markers from the running io counters at render time.
-"""
-
 from __future__ import annotations
 
 import html

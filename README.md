@@ -20,6 +20,8 @@ make
 
 Ensure you have Python 3.6+ installed. Install the required Python dependencies for the CLI interface:
 ```bash
+python -m venv .env
+source .env/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -37,12 +39,20 @@ Run your target binary using the Python orchestrator. This automatically injects
 python memtrack.py run ./your_target_bin
 ```
 
-2. Analyze and export the trace
+2. Analyze the trace
 
 Parse the generated trace.jsonl file to display execution statistics, peak memory usage, and memory leak detection in the terminal:
 
 ```bash
 python memtrack.py analyze trace.jsonl
+```
+
+3. Export your trace
+
+Export the trace to an interactive HTML report for visual analysis:
+
+```bash
+python memtrack.py export trace.jsonl report.html
 ```
 
 ## Contributing
@@ -57,6 +67,34 @@ Contributions are welcome to expand the tracing capabilities or improve the visu
 
 Please ensure that your C code does not introduce blocking operations in the interception hooks to maintain the low-overhead philosophy of the profiler.
 
+#### Usage of AI
+
+Usage of AI tools had been performed to generate some aspect of the HTML code for the exporter and for correcting some English mistakes in the README.md file.
+If you want to contribute to the project and you are using AI tools, please ensure that the generated code is reviewed and tested to maintain the quality and integrity of the project.
+
 ## Contributors
 
-- Alexandre Lou-Poueyou - Initial work & Core Development
+<p align="center">
+  <img src="https://avatars.githubusercontent.com/AlexLoup33" 
+       width="140" 
+       style="border-radius: 50%;" 
+       alt="Alexandre L-P"/>
+</p>
+
+<p align="center">
+  <strong>Alexandre L-P</strong><br>
+  Master's Student – High Performance Computing<br>
+  Core Developper
+</p>
+
+<p align="center">
+  <a href="https://github.com/AlexLoup33" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <a href="https://www.linkedin.com/in/alexandre-lp/" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  </a>
+  <a href="mailto:alexandre.lou-poueyou@inria.fr" target="_blank">
+    <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+  </a>
+</p>
